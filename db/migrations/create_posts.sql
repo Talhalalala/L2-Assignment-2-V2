@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS posts;
+
 CREATE TABLE posts (
     id serial Primary KEY,
     title VARCHAR(100),

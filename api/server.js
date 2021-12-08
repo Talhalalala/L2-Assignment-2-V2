@@ -5,9 +5,9 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 
-const postRoutes = require('./routes/posts')
-server.use('/books', booksRoutes)
+const postsRoutes = require('./routes/posts')
+server.use('/posts', postsRoutes)
 
-server.get('/', (req, res) => res.send('Welcome to the Blog'))
+server.get('/', (req, res) => res.send('Welcome to the Posts'))
 
-module.exports = server
+module.exports = server;
