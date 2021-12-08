@@ -1,31 +1,3 @@
-// function displayPost(title, author, story) {
-//     // fetch newly added post from database
-// }
-
-// ASSIGNMENT WROTE:
-
-// async function getAll(category){
-//     try {
-//         const response = await fetch(`http://localhost:3000/${category}`);
-//         const data = await response.json()
-//         return data;
-//     } catch (err) {
-//         console.warn(err);
-//     }
-// }
-
-// async function getItem(category, id) {
-//     try {
-//         const response = await fetch(`http://localhost:3000/${category}/${id}`);
-//         const data = await response.json();
-//         return data;
-//     } catch (err) {
-//         console.warn(err);
-//     }
-// }
-
-// WE WROTE:
-
 let form = document.querySelector("#form");
 
 form.addEventListener("submit", (e) => {

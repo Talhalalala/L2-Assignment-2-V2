@@ -1,15 +1,15 @@
-version: '3'
+version: "3"
 services:
   server:
     image: node:12.18.4
     working_dir: /code
-    ports: 
+    ports:
       - 3000:3000
-    environment: 
-      - PGUSER=futureproof
+    environment:
+      - PGUSER=postgres
       - PGHOST=db
-      - PGPASSWORD=shelterpass
-      - PGDATABASE=shelter
+      - PGPASSWORD=postpass
+      - PGDATABASE=posting
       - PGPORT=5432
     depends_on:
       - db
@@ -17,16 +17,16 @@ services:
       - type: bind
         source: ./api
         target: /code
-    command: bash -c "npm install && npm start"
-​
+    command: bash -c "npm install && npm run dev"
+
   db:
     image: postgres:latest
     volumes:
       - "dbdata:/var/lib/postgresql/data"
       - "./db:/docker-entrypoint-initdb.d/:ro"
-    environment: 
-      - POSTGRES_DB=shelter
-      - POSTGRES_USER=futureproof
-      - POSTGRES_PASSWORD=shelterpass
+    environment:
+      - POSTGRES_DB=posting
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postpass
 volumes:
   dbdata:
