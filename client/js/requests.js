@@ -1,20 +1,18 @@
-
 // function displayPost(title, author, story) {
 //     // fetch newly added post from database
 // }
 
-
 // ASSIGNMENT WROTE:
 
-async function getAll(category){
-    try {
-        const response = await fetch(`http://localhost:3000/${category}`);
-        const data = await response.json()
-        return data;
-    } catch (err) {
-        console.warn(err);
-    }
-}
+// async function getAll(category){
+//     try {
+//         const response = await fetch(`http://localhost:3000/${category}`);
+//         const data = await response.json()
+//         return data;
+//     } catch (err) {
+//         console.warn(err);
+//     }
+// }
 
 // async function getItem(category, id) {
 //     try {
@@ -26,43 +24,56 @@ async function getAll(category){
 //     }
 // }
 
-
-
 // WE WROTE:
 
-let form = document.querySelector('#form');
+let form = document.querySelector("#form");
 
-form.addEventListener('submit', (e) => {
-    handleValues(e);
+form.addEventListener("submit", (e) => {
+  handleValues(e);
 });
 
-function handleValues(e){
-    e.preventDefault();
-    let titleInput = document.querySelector('#title').value;
-    let authorInput = document.querySelector('#author').value;
-    let storyInput = document.querySelector('#story').value; 
+function handleValues(e) {
+  e.preventDefault();
+  let titleData = document.querySelector("#title").value;
+  let authorData = document.querySelector("#author").value;
+  let storyData = document.querySelector("#story").value;
 
-    displayPost(title, author, story);
-    postPost()
+  // displayPost(title, author, story);
+  postPost(titleData, authorData, storyData);
 }
 
-async function postPost(e){
-    e.preventDefault();
-    try {
-        const options = {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
-        }
-        
-        const response = await fetch('http://localhost:3000/post', options);
-        const { id, err } = await response.json();
-        if(err) { 
-            throw Error(err) 
-        } else {
-            window.location.hash = `#books/${id}`
-        }
-    } catch (err) {
-        console.warn(err);
-    }
+async function postPost(titleData, authorData, storyData) {
+  try {
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title: titleData,
+        author: authorData,
+        story: storyData,
+      }),
+    };
+
+    const response = await fetch("http://localhost:3000/posts", options);
+    const data = await response.json();
+    displayPost(data);
+  } catch (err) {
+    console.warn(err);
+  }
+}
+
+async function displayPost(data) {
+  try {
+    const response = await fetch(`http://localhost:3000/posts/${data.id}`);
+    const mainData = await response.json();
+
+    document.querySelector("#displayedtitle").textContent = mainData.title;
+    document.querySelector("#displayedauthor").textContent = mainData.author;
+    document.querySelector("#displayedstory").textContent = mainData.story;
+
+    document.querySelector("#form").style.display = "none";
+    document.querySelector("#heading").style.display = "none";
+  } catch (err) {
+    console.warn(err);
+  }
 }
