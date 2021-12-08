@@ -12,8 +12,8 @@ module.exports = class Post {
     static get all(){
         return new Promise(async (resolve, reject) => {
             try{
-                let postData = await db.query('SELECT id FROM posts');
-                let posts = postData.rows.map(b => new post(b));
+                let postData = await db.query('SELECT * FROM posts');
+                let posts = postData.rows.map(p => new Post(p));
                 resolve (posts);
             } catch (err) {
                 reject('Post not found!');
@@ -26,7 +26,7 @@ module.exports = class Post {
             try {
                 const { title, author, story} = postData;
                 let result = await db.query('INSERT INTO posts (title, author, story) VALUES ($1, $2, $3) RETURNING *;',
-                [title, author, abstract]);
+                [title, author, story]);
                 resolve (result.rows[0]);
             } catch (err) {
                 reject('Post could not be created');
