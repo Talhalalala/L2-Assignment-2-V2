@@ -10,7 +10,6 @@ function handleValues(e) {
   let authorData = document.querySelector("#author").value;
   let storyData = document.querySelector("#story").value;
 
-  // displayPost(title, author, story);
   postPost(titleData, authorData, storyData);
 }
 
