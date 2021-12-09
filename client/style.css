@@ -1,0 +1,57 @@
+section {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-left: 49px;
+  margin-top: 45px;
+}
+
+#title,
+#author,
+#story {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  font-family: "Times New Roman", Times, serif;
+}
+
+#author {
+  font-size: 14px;
+  font-family: CustomSansSerif, "Lucida Grande", Arial, sans-serif;
+}
+#story {
+  margin-top: 10px;
+  font-size: 18px;
+  font-family: CustomSerif, Georgia, Cambria, "Times New Roman", serif;
+}
+h1 {
+  color: blueviolet;
+  display: none;
+}
+
+#button {
+  position: relative;
+  margin-top: 50px;
+  margin-left: 60px;
+  border-radius: 20px;
+  padding: 2px;
+  background-color: white;
+  border-color: black;
+  padding-left: 14px;
+  padding-right: 14px;
+  font-weight: bold;
+}
+
+#title {
+  font-size: 30px;
+  font-family: CustomSansSerif, "Lucida Grande", Arial, sans-serif;
+}
+
+.newPostStuff {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-left: 60px;
+  margin-top: 60px;
+}
