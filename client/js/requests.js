@@ -45,6 +45,7 @@ async function displayPost(data) {
 
     document.querySelector("#form").style.display = "none";
     document.querySelector("#heading").style.display = "none";
+    document.querySelector("#button").style.display = "none";
   } catch (err) {
     console.warn(err);
   }
